@@ -1,0 +1,38 @@
+<html>
+<body>
+<form method="post">
+	<input type="text" name="Number" >
+	<button name="submit">Submit</button>
+</form>
+</body>
+</html>
+<?php
+//$conn = mysqli_connect('localhost','root','','fibonacci');
+if (isset($_POST['submit'])) {
+  $n=$_POST['Number'];
+  $number1 = 0;
+  $number2 = 1;
+  echo "Fibonacci Series \n";
+  echo $number1.' '.$number2.' ';
+  for($i = 2; $i < $n; $i++){
+    $number3= $number1 + $number2;
+    echo $number3.' ';
+    $number1 = $number2;
+    $number2 = $number3;
+    $temp=' '.$number3;
+    }
+    $sql= "INSERT INTO  fib (result) VALUES('$temp')";
+	 if($conn->query($sql)=== TRUE)
+{
+	echo"<font color=#FF00FF> New Record Inserted<br></font>";
+	}
+  else
+  {
+	  echo"Error:".$sql."<br>".$conn;
+	  }}
+//function F($n)
+ //{
+  
+//}
+//F(2);
+?>
